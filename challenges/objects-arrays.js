@@ -55,7 +55,7 @@ console.log(dinosaurOne.period);
 
 // Create a new roar method for the tyrannosaurus.  When called, return "RAWERSRARARWERSARARARRRR!" Log the result.
 
-console.log(dinosaurOne.roar);
+console.log(dinosaurOne.roar());
 
 // ==== Arrays ====
 
@@ -128,8 +128,17 @@ const graduates = [
 /* Request 1: Create a new array called universities that contains all the universities in the graduates array.  
 
 Once you have the new array created, sort the universities alphabetically and log the result. */
-const universities = [];
+
+//Solution using the map() method
+function getUniversity(graduate) {
+  return graduate.university;
+}
+
+const universities = graduates.map(getUniversity);
 console.log(universities);
+
+const universityAlphabetically = universities.sort();
+console.log(universityAlphabetically);
 
 /* Request 2: Create a new array called contactInfo that contains both first name and email of each student. 
 
@@ -137,11 +146,35 @@ The resulting contact information should have a space between the first name and
 Name email@example.com
 
 Log the result of your new array. */
-const contactInfo = [];
+
+//Solution
+function contactInformation(graduate) {
+  return graduate.first_name + " " + graduate.email;
+}
+
+const contactInfo = graduates.map(contactInformation);
+
 console.log(contactInfo);
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
-const uni = [];
+
+// Write function to search for "Uni" in a string
+function uniSearch(str) {
+  if (str.search("Uni") !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// Write filter function & criteria
+function filterFunc(graduate) {
+  let criteria = uniSearch(graduate.university);
+  return criteria;
+}
+
+const uni = graduates.filter(filterFunc);
+
 console.log(uni);
 
 // ==== ADVANCED Array Methods ====
