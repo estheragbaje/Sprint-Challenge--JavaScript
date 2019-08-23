@@ -251,11 +251,13 @@ The zoo wants to display both the scientific name and the animal name in front o
 */
 
 //creating function for .forEach
+const animalNames = [];
 function scientificAndAnimalName(zooAnimal) {
-  console.log(zooAnimal.animal_name + " " + zooAnimal.scientific_name);
+  const result = zooAnimal.animal_name + " " + zooAnimal.scientific_name;
+  animalNames.push(result);
 }
 
-const animalNames = zooAnimals.forEach(scientificAndAnimalName);
+zooAnimals.forEach(scientificAndAnimalName);
 console.log(animalNames);
 
 /* Request 2: .map()    
@@ -290,7 +292,11 @@ console.log(lowerPopulation);
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
+
+let populationTotal = zooAnimals.reduce(function(acc, zooAnimal) {
+  return acc + zooAnimal.population;
+}, 0);
+
 console.log(populationTotal);
 
 /* 
